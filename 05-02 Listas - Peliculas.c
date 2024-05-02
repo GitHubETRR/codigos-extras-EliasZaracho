@@ -10,33 +10,27 @@ typedef struct Pelicula {
   int año_estreno;
   struct Pelicula *next;
 } Pelicula_t;
-
 Pelicula_t *lista_peliculas = NULL;
-
 void menu();
 void Pedir_Informacion(Pelicula_t *pelicula);
 void CargarPelicula();
 void MostrarPeliculas(Pelicula_t *pelicula);
 void VerLista();
 void LiberarEspacio();
-
 int main(void) {
-  menu();           // Función principal 
+  menu(); // Función principal 
   LiberarEspacio(); // Libera la memoria asignada a las películas antes de salir
   return 0;
 }
 
-void Pedir_Informacion(Pelicula_t *pelicula) { // Función para solicitar
-                                               // información de una película
+void Pedir_Informacion(Pelicula_t *pelicula) { // Función para solicitar información de una película
   printf("Ingrese el nombre de la pelicula: ");
   fgets(pelicula->nombre, sizeof(pelicula->nombre), stdin);
   pelicula->nombre[strcspn(pelicula->nombre, "\n")] =
       '\0'; // Elimina el salto de línea
-
   printf("Ingrese el genero de la pelicula: ");
   fgets(pelicula->genero, sizeof(pelicula->genero), stdin);
   pelicula->genero[strcspn(pelicula->genero, "\n")] = '\0';
-
   printf("Ingrese el año de estreno de la pelicula: ");
   scanf("%d", &(pelicula->año_estreno));
   getchar(); // Limpia el buffer de entrada
@@ -46,7 +40,7 @@ void CargarPelicula() { // Función para cargar una nueva película
   Pelicula_t *pelicula_aux;
   pelicula_aux =
       malloc(sizeof(Pelicula_t)); // Reserva memoria para la nueva película
-  if (pelicula_aux == NULL) {     // Verifica si se asignó memoria bien
+  if (pelicula_aux == NULL) { // Verifica si se asignó memoria bien
     printf("No hay más espacio en la memoria.\n");
     return;
   }
@@ -71,7 +65,7 @@ void VerLista() { // Función para mostrar la lista de películas cargadas
   } else {
     while (temp != NULL) {
       MostrarPeliculas(temp); // Muestra la info de cada peli
-      temp = temp->next;      // Avanza al siguiente coso en la lista
+      temp = temp->next; // Avanza al siguiente coso en la lista
     }
   }
 }
@@ -85,7 +79,7 @@ void menu() { // Función del menú principal
     printf("4. Salir\n");
     printf("▾▵▾▵▾▵▾▵▾▵▾▵▾▵▾▵▾▵▾▵▾▵▾▵▾▵▾▵\n");
     scanf("%d", &opcion); // Lee la opción seleccionada por el usuario
-    getchar();            // Limpia el buffer de entrada
+    getchar();// Limpia el buffer de entrada
     if (opcion == 1)
       CargarPelicula(); // Llama a la función para cargar una película
     if (opcion == 2)
@@ -94,8 +88,7 @@ void menu() { // Función del menú principal
       LiberarEspacio();  // Llama a la función para liberar la memoria
   } while (opcion != 4); // Repite el menú hasta que el usuario seleccione salir
 }
-void LiberarEspacio() { // Función para liberar la memoria asignada a la lista
-                        // de películas
+void LiberarEspacio() { // Función para liberar la memoria asignada a la lista de películas
   Pelicula_t *aux = NULL;
   while (lista_peliculas != NULL) {
     aux = lista_peliculas; // Almacena temporalmente el nodo actual
