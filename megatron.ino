@@ -30,23 +30,23 @@ void setup(){ //únicamente cuando enciende hacemos
 
 void loop(){ 
     //caso 1
-    while(megatron.traer_distancia(0)> DIST_VISION && megatron.traer_distancia(1) > DIST_VISION && digitalRead(IR_FD)== NEGRO && digitalRead(IR_FI)== NEGRO) {
-      analogWrite(PWM_1,VEL_GIRO);
-      analogWrite(PWM_2,VEL_GIRO);
-      megatron.Derecha();
-      delay(TIME_GIRO);
+  while(megatron.traer_distancia(0) > DIST_VISION && megatron.traer_distancia(1) > DIST_VISION && digitalRead(IR_FD) == NEGRO && digitalRead(IR_FI) == NEGRO) {
+    analogWrite(PWM_1,VEL_GIRO);
+    analogWrite(PWM_2,VEL_GIRO);
+    megatron.Derecha();
+    delay(TIME_GIRO);
   }
 
     //caso 2
-  if(distancia_frontal_1<=DIST_VISION && distancia_frontal_2<=DIST_VISION){
+  if(megatron.traer_distancia(0) <= DIST_VISION && megatron.traer_distancia(1) <= DIST_VISION){
     megatron.Izquierda();
     delay(TIME_GIRO);
-    while(distancia_frontal_1<=DIST_VISION && distancia_frontal_2<=DIST_VISION && digitalRead(IR_FD)== NEGRO && digitalRead(IR_FI)== NEGRO){ //si distancia frontal es la menor
+    while(megatron.traer_distancia(0) <= DIST_VISION && megatron.traer_distancia(1) <= DIST_VISION && digitalRead(IR_FD) == NEGRO && digitalRead(IR_FI)== NEGRO){ 
       analogWrite(PWM_1,VELOCIDAD);
       analogWrite(PWM_2,VELOCIDAD);
     megatron.Avanzar();
     }
-    if(digitalRead(IR_FD)== BLANCO || digitalRead(IR_FI)== BLANCO){
+    if (digitalRead (IR_FD) == BLANCO || digitalRead(IR_FI)== BLANCO){
       while(digitalRead(IR_FD)== BLANCO || digitalRead(IR_FI) == BLANCO){
         analogWrite(PWM_1,VELOCIDAD);
         analogWrite(PWM_2,VELOCIDAD);
