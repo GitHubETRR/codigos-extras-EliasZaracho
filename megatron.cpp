@@ -1,5 +1,6 @@
 #include "megatron.h"
 
+struct Sensores Sensor[2];
 
 void Robot::Avanzar()  {
   digitalWrite(MOTOR1_A, LOW);
