@@ -29,8 +29,6 @@
 #define TIME_SEGURIDAD 500
 #define CONVER_A_CM   59
 
-#define distancia_frontal_1  150
-#define distancia_frontal_2  150
 #define DIST_VISION 150
 
 //hacer una estructura que tenga sensores trigger y el echo, hacer un vector de esto
