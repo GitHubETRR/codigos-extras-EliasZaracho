@@ -1,9 +1,8 @@
 #include <Arduino.h>
-#define SENSOR1 1 
+
 #define TRIGGER_1 2
 #define ECHO_1    3
 
-#define SENSOR2 2
 #define TRIGGER_2 4
 #define ECHO_2    5
 
