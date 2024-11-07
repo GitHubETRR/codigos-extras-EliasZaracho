@@ -32,7 +32,7 @@
 
 //hacer una estructura que tenga sensores trigger y el echo, hacer un vector de esto
 
-struct Sensores {
+extern struct Sensores {
   int Trigger;
   int Echo;
 
